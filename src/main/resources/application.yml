@@ -1,0 +1,38 @@
+server:
+  port: 3743
+
+spring:
+  application:
+    name: drawDream
+  datasource:
+    url: jdbc:mysql://localhost:3306/drawdream?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&useSSL=false #不用解释
+    username: root #mysql 登录名
+    password: root  #mysql 登录密码
+    driver-class-name: com.mysql.cj.jdbc.Driver #mysql 服务支持
+#    tomcat:
+#      uri-encoding=UTF-8:
+    dbcp2: #数据库连接池设置
+      validation-query: 'select 1'
+      test-on-borrow: true
+      test-while-idle: true
+      time-between-eviction-runs-millis: 27800
+      initial-size: 5
+      max-idle: 100
+      min-idle: 5
+      max-wait-millis: 10000
+    #devtools 热部署配置
+  devtools:
+    restart:
+    #开启热部署 true
+     enabled: true
+     #每次热部署进行编译的包
+     additional-paths: src/main/java
+#mybatis 配置
+mybatis:
+  mapper-locations: classpath:mapper/admin/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+    cache-enabled: true
+  #实体类包名
+  type-aliases-package: com.drawdream.app.*.pojo
