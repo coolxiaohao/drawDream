@@ -5,13 +5,13 @@ spring:
   application:
     name: drawDream
   datasource:
-    url: jdbc:mysql://localhost:3306/drawdream?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&useSSL=false #²»ÓÃ½âÊÍ
-    username: root #mysql µÇÂ¼Ãû
-    password: root  #mysql µÇÂ¼ÃÜÂë
-    driver-class-name: com.mysql.cj.jdbc.Driver #mysql ·şÎñÖ§³Ö
+    url: jdbc:mysql://localhost:3306/drawdream?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&useSSL=false #ä¸ç”¨è§£é‡Š
+    username: root #mysql ç™»å½•å
+    password: root  #mysql ç™»å½•å¯†ç 
+    driver-class-name: com.mysql.cj.jdbc.Driver #mysql æœåŠ¡æ”¯æŒ
 #    tomcat:
 #      uri-encoding=UTF-8:
-    dbcp2: #Êı¾İ¿âÁ¬½Ó³ØÉèÖÃ
+    dbcp2: #æ•°æ®åº“è¿æ¥æ± è®¾ç½®
       validation-query: 'select 1'
       test-on-borrow: true
       test-while-idle: true
@@ -20,19 +20,19 @@ spring:
       max-idle: 100
       min-idle: 5
       max-wait-millis: 10000
-    #devtools ÈÈ²¿ÊğÅäÖÃ
+    #devtools çƒ­éƒ¨ç½²é…ç½®
   devtools:
     restart:
-    #¿ªÆôÈÈ²¿Êğ true
+    #å¼€å¯çƒ­éƒ¨ç½² true
      enabled: true
-     #Ã¿´ÎÈÈ²¿Êğ½øĞĞ±àÒëµÄ°ü
+     #æ¯æ¬¡çƒ­éƒ¨ç½²è¿›è¡Œç¼–è¯‘çš„åŒ…
      additional-paths: src/main/java
-#mybatis ÅäÖÃ
+#mybatis é…ç½®
 mybatis:
   mapper-locations: classpath:mapper/admin/*.xml
   configuration:
     map-underscore-to-camel-case: true
     call-setters-on-nulls: true
     cache-enabled: true
-  #ÊµÌåÀà°üÃû
+  #å®ä½“ç±»åŒ…å
   type-aliases-package: com.drawdream.app.*.pojo
