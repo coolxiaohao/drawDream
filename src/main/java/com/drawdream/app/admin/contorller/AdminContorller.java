@@ -1,7 +1,6 @@
 package com.drawdream.app.admin.contorller;
 
 import cn.hutool.db.nosql.redis.RedisDS;
-import cn.hutool.json.JSONObject;
 import com.drawdream.app.admin.pojo.Admin;
 import com.drawdream.app.admin.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ public class AdminContorller {
 
     @RequestMapping("/getAdmin")
     public Admin getAdmin(int id){
-        Jedis jedis = RedisDS.create().getJedis();
+//        Jedis jedis = RedisDS.create().getJedis();
         Admin admin = new Admin();
         System.out.println(id);
         if (id > 0){
@@ -29,7 +28,7 @@ public class AdminContorller {
             admin = null;
         }
 //        jedis
-        jedis.set("admin",admin.toString());
+//        jedis.set("admin",admin.toString());
        return admin;
     }
 

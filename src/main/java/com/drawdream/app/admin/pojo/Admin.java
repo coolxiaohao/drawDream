@@ -1,22 +1,27 @@
 package com.drawdream.app.admin.pojo;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
 
+/**
+ * 管理员表
+ */
 public class Admin {
-    public int id;
-    public String adminName;
-    public String adminPwd;
-    public String adminKey;
-    public String adminActionPwd;
-    public String adminActionKey;
-    public String adminPhone;
-    public String adminToken;
-    //    public Rule Rule;
-//    @DateTimeFormat('yyyy-DD-mm')
-    public Date addTime;
-    public Date editTime;
+    private int id;//管理员id
+    private String adminName;//管理员名字
+    private String adminPwd;//管理员密码
+    private String adminKey;//管理员密码秘钥
+    private String adminActionPwd;//管理员操作密码
+    private String adminActionKey;//管理员操作密码秘钥
+    private String adminPhone;//管理员手机号码
+    private String adminToken;//管理员唯一登录验证
+    private Rulegroup Rule;
+    @JsonFormat(pattern = "yyyy-MM-dd",locale="zh",timezone="GMT+8")
+    private Date addTime;
+    @JsonFormat(pattern = "yyyy-MM-dd",locale="zh",timezone="GMT+8")
+    private Date editTime;
 
     public int getId() {
         return id;
