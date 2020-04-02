@@ -1,6 +1,5 @@
 server:
   port: 3743
-
 spring:
  application:
   name: drawDream
@@ -20,13 +19,13 @@ spring:
     max-idle: 100
     min-idle: 5
     max-wait-millis: 10000
-  #devtools 热部署配置
-devtools:
-  restart:
-    #开启热部署 true
-    enabled: true
-    #每次热部署进行编译的包
-    additional-paths: src/main/java
+ #devtools 热部署配置
+ devtools:
+   restart:
+     #开启热部署 true
+     enabled: true
+     #每次热部署进行编译的包
+     additional-paths: src/main/java
 #mybatis 配置
 mybatis:
  mapper-locations: classpath:mapper/admin/*.xml
@@ -36,3 +35,4 @@ mybatis:
   cache-enabled: true
  #实体类包名
  type-aliases-package: com.drawdream.app.*.pojo
+

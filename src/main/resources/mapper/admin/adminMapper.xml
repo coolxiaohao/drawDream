@@ -2,7 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.drawdream.app.admin.dao.AdminDao">
    <!--查询-->
-    <select id="getAdmin" resultType="com.drawdream.app.admin.pojo.Admin">
+    <select id="findAdminById" resultType="com.drawdream.app.admin.pojo.Admin">
         select * from admin where id = #{id}
+    </select>
+
+    <select id="findByAdminName" resultType="com.drawdream.app.admin.pojo.Admin">
+        select * from admin where adminName = #{adminName}
     </select>
 </mapper>

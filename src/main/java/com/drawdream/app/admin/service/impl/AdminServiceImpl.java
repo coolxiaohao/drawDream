@@ -12,7 +12,12 @@ public class AdminServiceImpl implements AdminService {
     private AdminDao adminDao;
 
     @Override
-    public Admin getAdmin(int id) {
-        return adminDao.getAdmin(id);
+    public Admin findByAdminName(String adminName) {
+        return adminDao.findByAdminName(adminName);
+    }
+
+    @Override
+    public Admin findAdminById(int id) {
+        return adminDao.findAdminById(id);
     }
 }
