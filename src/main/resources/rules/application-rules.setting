@@ -1,0 +1,3 @@
+admin= [adminLogin,adminIndex]
+home= [,]
+api= [,]

@@ -15,7 +15,7 @@ public class JsonResult<T> {
     /**
      * 定义失败的返回数值
      */
-    private static final int CODE_FAIL = 400;
+    private static final int CODE_FAIL = 500;
     /**
      * 定义成功的返回提示字符串
      */

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.drawdream.app.admin.dao.RuleDao">
+    <insert id="addRule" parameterType="com.drawdream.app.admin.pojo.Rule">
+        insert into rule (ruleName,accessPath,needRule,type,addTime,port) value (#{rule.ruleName},#{rule.accessPath},#{rule.needRule},#{rule.type},#{rule.addTime},#{rule.port})
+    </insert>
+</mapper>

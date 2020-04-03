@@ -6,8 +6,8 @@ import cn.hutool.core.date.DateTime;
  * 权限表
  */
 public class Rule {
-    private Integer id;//权限id
-    private String adminRuleName;
+    private Integer id;
+    private String ruleName;
     private String accessPath;
     private Integer needRule;
     private Integer type;
@@ -23,11 +23,11 @@ public class Rule {
     }
 
     public String getAdminRuleName() {
-        return adminRuleName;
+        return ruleName;
     }
 
     public void setAdminRuleName(String adminRuleName) {
-        this.adminRuleName = adminRuleName;
+        this.ruleName = adminRuleName;
     }
 
     public String getAccessPath() {
@@ -68,5 +68,18 @@ public class Rule {
 
     public void setPort(String port) {
         this.port = port;
+    }
+
+    @Override
+    public String toString() {
+        return "Rule{" +
+                "id=" + id +
+                ", ruleName='" + ruleName + '\'' +
+                ", accessPath='" + accessPath + '\'' +
+                ", needRule=" + needRule +
+                ", type=" + type +
+                ", addTime=" + addTime +
+                ", port='" + port + '\'' +
+                '}';
     }
 }

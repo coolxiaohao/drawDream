@@ -1,0 +1,4 @@
+adminLogin.ruleName= 后台登录
+adminLogin.accessPath= /admin/login
+adminLogin.needRule= 1
+adminLogin.type= 1

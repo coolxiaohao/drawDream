@@ -36,3 +36,4 @@ mybatis:
  #实体类包名
  type-aliases-package: com.drawdream.app.*.pojo
 
+
