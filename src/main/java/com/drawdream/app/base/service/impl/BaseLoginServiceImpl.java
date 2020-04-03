@@ -1,6 +1,5 @@
 package com.drawdream.app.base.service.impl;
 
-import cn.hutool.core.io.watch.WatchException;
 import cn.hutool.db.nosql.redis.RedisDS;
 import com.drawdream.app.admin.pojo.Admin;
 import com.drawdream.app.admin.service.AdminService;
@@ -21,11 +20,19 @@ import redis.clients.jedis.Jedis;
 @Service
 public class BaseLoginServiceImpl implements BaseLoginService {
 
-//    private Jedis jedis = RedisDS.create().getJedis();
+    private static  Jedis jedis = RedisDS.create().getJedis();
+    /**
+     * @desc: 构造方法的注入
+     * @author: tanhao
+     * @date: 2020-04-03 09:17
+     */
+    private final AdminService adminService;
+    private final ToKenService toKenService;
     @Autowired
-    private AdminService adminService;
-    @Autowired
-    private ToKenService toKenService;
+    public BaseLoginServiceImpl(AdminService adminService, ToKenService toKenService) {
+        this.adminService = adminService;
+        this.toKenService = toKenService;
+    }
 
     @Override
     public JsonResult logins(String username, String password, String type) {
@@ -58,6 +65,7 @@ public class BaseLoginServiceImpl implements BaseLoginService {
                 return JsonResult.errorMsg(500, "密码错误");
             }else {
                 admin.setAdminToken(toKenService.getToken(admin.getId(),admin.getAdminPwd()));
+
                 return JsonResult.success(admin);
             }
         }
