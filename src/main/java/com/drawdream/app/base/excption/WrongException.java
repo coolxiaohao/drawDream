@@ -19,7 +19,7 @@ public class WrongException extends RuntimeException {
 
     public WrongException(String msg) {
         super(msg);
-        this.code = 4000;
+        this.code = 400;
     }
 
     public Integer getCode() {

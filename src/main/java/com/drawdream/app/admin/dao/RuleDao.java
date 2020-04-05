@@ -14,4 +14,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RuleDao {
     int addRule(@Param("rule") Rule rule);
+    Rule getRule(@Param("accessPath")  String accessPath);
+    String getAccessPath(@Param("id")  int id);
 }

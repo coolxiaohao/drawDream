@@ -2,11 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.drawdream.app.admin.dao.AdminDao">
    <!--查询-->
-    <select id="findAdminById" resultType="com.drawdream.app.admin.pojo.Admin">
-        select * from admin where id = #{id}
+    <select id="findAdminById" resultMap="adminResult" resultType="com.drawdream.app.admin.pojo.Admin">
+        select a.*,r.* from  admin a,
+             rule r where id = #{id} and r.id = a.adminRuleId
     </select>
-
+    <!--根据用户名查询ADMIN对象-->
     <select id="findByAdminName" resultType="com.drawdream.app.admin.pojo.Admin">
         select * from admin where adminName = #{adminName}
     </select>
+    <!--联表查询-->
+    <resultMap type="com.drawdream.app.admin.pojo.Admin" id="adminResult">
+        <result property="id" column="id"/>
+        <result property="adminName" column="adminName"/>
+        <result property="adminPwd" column="adminPwd"/>
+        <result property="adminKey" column="adminKey"/>
+        <result property="adminActionPwd" column="adminActionPwd"/>
+        <result property="adminActionKey" column="adminActionKey"/>
+        <result property="adminPhone" column="adminPhone"/>
+        <result property="adminToken" column="adminToken"/>
+        <result property="addTime" column="addTime"/>
+        <result property="editTime" column="editTime"/>
+        <result property="headPortrait" column="headPortrait"/>
+        <association property="rulegroup" column="adminRuleId" javaType="com.drawdream.app.admin.pojo.Rulegroup">
+            <id property="id" column="rid"/>
+            <result property="groupName" column="groupName"/>
+            <result property="ruleGroup" column="ruleGroup"/>
+            <result property="type" column="type"/>
+            <result property="isDefault" column="isDefault"/>
+            <result property="addTime" column="addTime"/>
+            <result property="editTime" column="editTime"/>
+        </association>
+    </resultMap>
 </mapper>

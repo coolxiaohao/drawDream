@@ -1,6 +1,8 @@
 package com.drawdream.app.admin.service;
 
+import cn.hutool.setting.Setting;
 import com.drawdream.app.admin.pojo.Rule;
+import com.drawdream.app.base.pojo.JsonResult;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -12,5 +14,7 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface RuleService {
     int addRule(@Param("rule")  Rule rule);
-
+    Rule getRule(@Param("accessPath")  String accessPath);
+    JsonResult createRule();
+    String getAccessPath(@Param("id")  int id);
 }

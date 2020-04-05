@@ -1,3 +1,4 @@
+###模块化,绑定rules.setting 中的名称###
 admin= [adminLogin,adminIndex]
 home= [,]
 api= [,]

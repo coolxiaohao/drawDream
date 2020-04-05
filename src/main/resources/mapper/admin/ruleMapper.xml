@@ -4,4 +4,10 @@
     <insert id="addRule" parameterType="com.drawdream.app.admin.pojo.Rule">
         insert into rule (ruleName,accessPath,needRule,type,addTime,port) value (#{rule.ruleName},#{rule.accessPath},#{rule.needRule},#{rule.type},#{rule.addTime},#{rule.port})
     </insert>
+    <select id="getRule" resultType="com.drawdream.app.admin.pojo.Rule">
+        select * from rule where accessPath = #{accessPath}
+    </select>
+    <select id="getAccessPath" resultType="String">
+        select accessPath from rule where id = #{id}
+    </select>
 </mapper>

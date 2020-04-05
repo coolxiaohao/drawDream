@@ -17,11 +17,28 @@ public class Admin {
     private String adminActionKey;//管理员操作密码秘钥
     private String adminPhone;//管理员手机号码
     private String adminToken;//管理员唯一登录验证
-    private Rulegroup Rule;
-    @JsonFormat(pattern = "yyyy-MM-dd",locale="zh",timezone="GMT+8")
+    private Rulegroup rulegroup;
+    private String headPortrait;
+    @JsonFormat(pattern = "yyyy-MM-dd", locale = "zh", timezone = "GMT+8")
     private Date addTime;
-    @JsonFormat(pattern = "yyyy-MM-dd",locale="zh",timezone="GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd", locale = "zh", timezone = "GMT+8")
     private Date editTime;
+
+    public Rulegroup getRulegroup() {
+        return rulegroup;
+    }
+
+    public void setRulegroup(Rulegroup rulegroup) {
+        this.rulegroup = rulegroup;
+    }
+
+    public String getHeadPortrait() {
+        return headPortrait;
+    }
+
+    public void setHeadPortrait(String headPortrait) {
+        this.headPortrait = headPortrait;
+    }
 
     public int getId() {
         return id;
