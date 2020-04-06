@@ -1,7 +1,6 @@
 package com.drawdream.app.admin.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
 
@@ -12,23 +11,32 @@ public class Admin {
     private int id;//管理员id
     private String adminName;//管理员名字
     private String adminPwd;//管理员密码
-    private String adminKey;//管理员密码秘钥
+//    private String adminKey;//管理员密码秘钥
     private String adminActionPwd;//管理员操作密码
-    private String adminActionKey;//管理员操作密码秘钥
+//    private String adminActionKey;//管理员操作密码秘钥
     private String adminPhone;//管理员手机号码
     private String adminToken;//管理员唯一登录验证
-    private Rulegroup rulegroup;
+    private int adminRuleId;//管理员唯一登录验证
+    private RuleGroup rulegroup;
     private String headPortrait;
     @JsonFormat(pattern = "yyyy-MM-dd", locale = "zh", timezone = "GMT+8")
     private Date addTime;
     @JsonFormat(pattern = "yyyy-MM-dd", locale = "zh", timezone = "GMT+8")
     private Date editTime;
 
-    public Rulegroup getRulegroup() {
+    public int getAdminRuleId() {
+        return adminRuleId;
+    }
+
+    public void setAdminRuleId(int adminRuleId) {
+        this.adminRuleId = adminRuleId;
+    }
+
+    public RuleGroup getRulegroup() {
         return rulegroup;
     }
 
-    public void setRulegroup(Rulegroup rulegroup) {
+    public void setRulegroup(RuleGroup rulegroup) {
         this.rulegroup = rulegroup;
     }
 
@@ -64,13 +72,13 @@ public class Admin {
         this.adminPwd = adminPwd;
     }
 
-    public String getAdminKey() {
-        return adminKey;
-    }
-
-    public void setAdminKey(String adminKey) {
-        this.adminKey = adminKey;
-    }
+//    public String getAdminKey() {
+//        return adminKey;
+//    }
+//
+//    public void setAdminKey(String adminKey) {
+//        this.adminKey = adminKey;
+//    }
 
     public String getAdminActionPwd() {
         return adminActionPwd;
@@ -79,14 +87,14 @@ public class Admin {
     public void setAdminActionPwd(String adminActionPwd) {
         this.adminActionPwd = adminActionPwd;
     }
-
-    public String getAdminActionKey() {
-        return adminActionKey;
-    }
-
-    public void setAdminActionKey(String adminActionKey) {
-        this.adminActionKey = adminActionKey;
-    }
+//
+//    public String getAdminActionKey() {
+//        return adminActionKey;
+//    }
+//
+//    public void setAdminActionKey(String adminActionKey) {
+//        this.adminActionKey = adminActionKey;
+//    }
 
     public String getAdminPhone() {
         return adminPhone;
@@ -126,9 +134,9 @@ public class Admin {
                 "id=" + id +
                 ", adminName='" + adminName + '\'' +
                 ", adminPwd='" + adminPwd + '\'' +
-                ", adminKey='" + adminKey + '\'' +
+//                ", adminKey='" + adminKey + '\'' +
                 ", adminActionPwd='" + adminActionPwd + '\'' +
-                ", adminActionKey='" + adminActionKey + '\'' +
+//                ", adminActionKey='" + adminActionKey + '\'' +
                 ", adminPhone='" + adminPhone + '\'' +
                 ", adminToken='" + adminToken + '\'' +
                 ", addTime=" + addTime +

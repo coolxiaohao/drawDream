@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.drawdream.app.admin.dao.AdminDao">
+    <insert id="addAdminInfo" parameterType="com.drawdream.app.admin.pojo.Admin">
+        insert into admin (adminName, adminPwd, adminActionPwd, adminPhone, adminToken, adminRuleId, addTime, editTime, headPortrait)
+        value (#{admin.adminName},#{admin.adminPwd},#{admin.adminActionPwd},#{admin.adminPhone},#{admin.adminToken},#{admin.adminRuleId},#{admin.addTime},#{admin.editTime},#{admin.headPortrait})
+    </insert>
    <!--查询-->
     <select id="findAdminById" resultMap="adminResult" resultType="com.drawdream.app.admin.pojo.Admin">
         select a.*,r.* from  admin a,
@@ -23,7 +27,7 @@
         <result property="addTime" column="addTime"/>
         <result property="editTime" column="editTime"/>
         <result property="headPortrait" column="headPortrait"/>
-        <association property="rulegroup" column="adminRuleId" javaType="com.drawdream.app.admin.pojo.Rulegroup">
+        <association property="rulegroup" column="adminRuleId" javaType="com.drawdream.app.admin.pojo.RuleGroup">
             <id property="id" column="rid"/>
             <result property="groupName" column="groupName"/>
             <result property="ruleGroup" column="ruleGroup"/>

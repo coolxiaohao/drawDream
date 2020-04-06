@@ -2,7 +2,7 @@ package com.drawdream.app.admin.pojo;
 
 import cn.hutool.core.date.DateTime;
 
-public class Rulegroup {
+public class RuleGroup {
     private Integer id;
     private String groupName;
     private Integer type;
@@ -10,7 +10,7 @@ public class Rulegroup {
     private Integer isDefault;
     private DateTime addTime;
     private DateTime editTime;
-    private Rule rule;
+//    private Rule rule;
 
     public Integer getId() {
         return id;

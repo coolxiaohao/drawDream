@@ -33,4 +33,5 @@ public interface AdminService {
      * @return Admin
      */
     Admin findAdminById(@Param("id") int id);
+    int addAdminInfo(@Param("admin") Admin admin);
 }

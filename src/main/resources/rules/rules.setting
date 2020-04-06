@@ -3,9 +3,15 @@
 ### accessPath 权限路由###
 ### needRule 是否默认###
 ### type 是否需要登陆权限###
-#adminLogin
-adminLogin.ruleName= 后台登录
-adminLogin.accessPath= /admin/login
-adminLogin.needRule= 1
-adminLogin.type= 1
-#adminIndex
+
+#addRuleGroup 添加权限组
+addRuleGroup.ruleName= 添加权限组
+addRuleGroup.accessPath= /ruleGroup/addRuleGroup
+addRuleGroup.needRule= 1
+addRuleGroup.type= 1
+
+#createRule 初始化生成权限
+createRule.ruleName= 增量生成权限
+createRule.accessPath= /rule/createRule
+createRule.needRule= 1
+createRule.type= 1

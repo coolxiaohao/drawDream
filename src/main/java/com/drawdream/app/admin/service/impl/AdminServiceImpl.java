@@ -40,4 +40,9 @@ public class AdminServiceImpl implements AdminService {
     public Admin findAdminById(int id) {
         return adminDao.findAdminById(id);
     }
+
+    @Override
+    public int addAdminInfo(Admin admin) {
+        return adminDao.addAdminInfo(admin);
+    }
 }
