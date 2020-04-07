@@ -2,11 +2,13 @@ package com.drawdream.app.admin.pojo;
 
 import cn.hutool.core.date.DateTime;
 
+import java.util.Date;
+
 public class Log {
     private Integer id;
     private String logType;
     private String logContent;
-    private DateTime addTime;
+    private Date addTime;
     private String path;
 
     public Integer getId() {
@@ -33,7 +35,7 @@ public class Log {
         this.logContent = logContent;
     }
 
-    public DateTime getAddTime() {
+    public Date getAddTime() {
         return addTime;
     }
 

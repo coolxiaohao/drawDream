@@ -5,10 +5,12 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.db.nosql.redis.RedisDS;
 import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
 import com.drawdream.app.admin.pojo.Admin;
 import com.drawdream.app.admin.service.AdminService;
 import com.drawdream.app.base.pojo.JsonResult;
 import com.drawdream.app.base.service.BaseLoginService;
+import com.drawdream.app.base.utils.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -60,7 +62,6 @@ public class AdminController {
         } else {
             admin = null;
         }
-        System.out.println(admin.toString());
         return admin;
     }
 
@@ -78,7 +79,6 @@ public class AdminController {
      */
     @RequestMapping("/login")
     public JsonResult Login(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println(request.getParameter("username"));
         return loginService.logins(request.getParameter("username"), request.getParameter("password"), "admin");
     }
 
@@ -112,5 +112,36 @@ public class AdminController {
         }else {
            return JsonResult.errorMsg(400,"添加失败");
         }
+    }
+
+    @RequestMapping("/updPwdAdmin")
+    public JsonResult updPwdAdmin(String type,String oldPwd,String newPwd,String repeatPwd,String actionPwd){
+        Admin admin=null;
+        if (!StrUtil.hasEmpty(TokenUtil.getTokenAdminId())){
+            int adminId=Integer.parseInt(TokenUtil.getTokenAdminId());
+            admin = adminService.findAdminById(adminId);
+        }else {
+            return JsonResult.errorMsg(400,"请先登录！");
+        }
+        if(!newPwd.equals(repeatPwd) || newPwd.isEmpty()){
+            return JsonResult.errorMsg(400,"两次密码不一致或为空，请重新输入！");
+        }
+        if (type.equals("actionPwd")){
+            if(!admin.getAdminActionPwd().equals(SecureUtil.md5(oldPwd))){
+                return JsonResult.errorMsg(400,"旧密码错误，请重新输入！");
+            }
+            admin.setAdminActionPwd(newPwd);
+        }else {
+            if(!admin.getAdminActionPwd().equals(SecureUtil.md5(actionPwd))){
+                return JsonResult.errorMsg(400,"操作密码错误，请重新输入！");
+            }
+            if(!admin.getAdminPwd().equals(SecureUtil.md5(oldPwd))){
+                return JsonResult.errorMsg(400,"旧密码错误，请重新输入！");
+            }
+            admin.setAdminPwd(newPwd);
+        }
+        jedis.set(admin.getAdminName(), JSONUtil.toJsonStr(admin));
+        adminService.updPwdAdmin(SecureUtil.md5(newPwd),admin.getId(),type);
+        return JsonResult.success();
     }
 }

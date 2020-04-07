@@ -45,4 +45,9 @@ public class AdminServiceImpl implements AdminService {
     public int addAdminInfo(Admin admin) {
         return adminDao.addAdminInfo(admin);
     }
+
+    @Override
+    public int updPwdAdmin(String password, Integer id,String passwordName) {
+        return adminDao.updPwdAdmin(password,id,passwordName);
+    }
 }

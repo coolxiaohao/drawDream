@@ -2,6 +2,8 @@ package com.drawdream.app.admin.pojo;
 
 import cn.hutool.core.date.DateTime;
 
+import java.util.Date;
+
 /**
  * 用户表
  */
@@ -14,8 +16,8 @@ public class User {
     private String userDealKey;//用户支付密码秘钥
     private Integer status;//用户状态
     private String userPhone;//用户手机号码
-    private DateTime addTime;//用户添加时间
-    private DateTime editTime;//用户编辑时间
+    private Date addTime;//用户添加时间
+    private Date editTime;//用户编辑时间
 
     public Integer getId() {
         return id;
@@ -81,19 +83,19 @@ public class User {
         this.userPhone = userPhone;
     }
 
-    public DateTime getAddTime() {
+    public Date getAddTime() {
         return addTime;
     }
 
-    public void setAddTime(DateTime addTime) {
+    public void setAddTime(Date addTime) {
         this.addTime = addTime;
     }
 
-    public DateTime getEditTime() {
+    public Date getEditTime() {
         return editTime;
     }
 
-    public void setEditTime(DateTime editTime) {
+    public void setEditTime(Date editTime) {
         this.editTime = editTime;
     }
 }

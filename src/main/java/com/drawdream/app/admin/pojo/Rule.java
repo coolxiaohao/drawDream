@@ -1,6 +1,9 @@
 package com.drawdream.app.admin.pojo;
 
-import cn.hutool.core.date.DateTime;
+//import cn.hutool.core.date.DateTime;
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * 权限表
@@ -11,7 +14,8 @@ public class Rule {
     private String accessPath;
     private Integer needRule;
     private Integer type;
-    private DateTime addTime;
+    @JsonFormat(pattern = "yyyy-MM-dd", locale = "zh", timezone = "GMT+8")
+    private Date addTime;
     private String port;
 
     public Integer getId() {
@@ -54,11 +58,11 @@ public class Rule {
         this.type = type;
     }
 
-    public DateTime getAddTime() {
+    public Date getAddTime() {
         return addTime;
     }
 
-    public void setAddTime(DateTime addTime) {
+    public void setAddTime(Date addTime) {
         this.addTime = addTime;
     }
 

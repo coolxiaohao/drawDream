@@ -1,6 +1,8 @@
 package com.drawdream.app.admin.pojo;
 
-import cn.hutool.core.date.DateTime;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
 
 public class RuleGroup {
     private Integer id;
@@ -8,8 +10,10 @@ public class RuleGroup {
     private Integer type;
     private String ruleGroup;
     private Integer isDefault;
-    private DateTime addTime;
-    private DateTime editTime;
+    @JsonFormat(pattern = "yyyy-MM-dd", locale = "zh", timezone = "GMT+8")
+    private Date addTime;
+    @JsonFormat(pattern = "yyyy-MM-dd", locale = "zh", timezone = "GMT+8")
+    private Date editTime;
 //    private Rule rule;
 
     public Integer getId() {
@@ -52,19 +56,19 @@ public class RuleGroup {
         this.isDefault = isDefault;
     }
 
-    public DateTime getAddTime() {
+    public Date getAddTime() {
         return addTime;
     }
 
-    public void setAddTime(DateTime addTime) {
+    public void setAddTime(Date addTime) {
         this.addTime = addTime;
     }
 
-    public DateTime getEditTime() {
+    public Date getEditTime() {
         return editTime;
     }
 
-    public void setEditTime(DateTime editTime) {
+    public void setEditTime(Date editTime) {
         this.editTime = editTime;
     }
 }

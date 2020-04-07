@@ -2,18 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.drawdream.app.admin.dao.AdminDao">
     <insert id="addAdminInfo" parameterType="com.drawdream.app.admin.pojo.Admin">
-        insert into admin (adminName, adminPwd, adminActionPwd, adminPhone, adminToken, adminRuleId, addTime, editTime, headPortrait)
-        value (#{admin.adminName},#{admin.adminPwd},#{admin.adminActionPwd},#{admin.adminPhone},#{admin.adminToken},#{admin.adminRuleId},#{admin.addTime},#{admin.editTime},#{admin.headPortrait})
+        insert into admin (adminName, adminPwd, adminActionPwd, adminPhone, adminToken, adminRuleId, addTime, editTime,
+                           headPortrait)
+            value (#{admin.adminName}, #{admin.adminPwd}, #{admin.adminActionPwd}, #{admin.adminPhone},
+                   #{admin.adminToken}, #{admin.adminRuleId}, #{admin.addTime}, #{admin.editTime},
+                   #{admin.headPortrait})
     </insert>
-   <!--查询-->
+    <!--查询-->
     <select id="findAdminById" resultMap="adminResult" resultType="com.drawdream.app.admin.pojo.Admin">
-        select a.*,r.* from  admin a,
-             rule r where a.id = #{id} and r.id = a.adminRuleId
+        select a.*, r.*, r.id as rid, r.addTime as rAddTime, r.editTime as rEditTime
+        from admin as a,
+             rulegroup as r
+        where a.id = #{id}
+          and r.id = a.adminRuleId
     </select>
     <!--根据用户名查询ADMIN对象-->
     <select id="findByAdminName" resultType="com.drawdream.app.admin.pojo.Admin">
-        select * from admin where adminName = #{adminName}
+        select *
+        from admin
+        where adminName = #{adminName}
     </select>
+
+    <!--修改密码-->
+    <update id="updPwdAdmin">
+        <![CDATA[
+        update admin
+        set ${passwordName} = #{password}
+        where id = #{id}
+        ]]>
+    </update>
+
+
     <!--联表查询-->
     <resultMap type="com.drawdream.app.admin.pojo.Admin" id="adminResult">
         <result property="id" column="id"/>
@@ -33,8 +52,8 @@
             <result property="ruleGroup" column="ruleGroup"/>
             <result property="type" column="type"/>
             <result property="isDefault" column="isDefault"/>
-            <result property="addTime" column="addTime"/>
-            <result property="editTime" column="editTime"/>
+            <result property="addTime" column="rAddTime"/>
+            <result property="editTime" column="rEditTime"/>
         </association>
     </resultMap>
 </mapper>

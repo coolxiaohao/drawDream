@@ -44,9 +44,10 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         //获取路由
         String path = httpServletRequest.getRequestURI();
         //是否跳过权限认证
+        System.out.println(path);
         Rule rule = ruleService.getRule(path);
         if (rule == null){
-            return  true;
+            return true;
         }
         if (rule.getPort().equals(module) && rule.getType() == 0) {
             return true;
@@ -92,6 +93,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             }
             String[] ruleIds = admin.getRulegroup().getRuleGroup().split(",");
             boolean isRule = false;
+
             for (String ruleId: ruleIds) {
                 String AccessPath = ruleService.getAccessPath(Integer.parseInt(ruleId));
                 if (AccessPath.equals(path)){

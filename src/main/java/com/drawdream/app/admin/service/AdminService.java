@@ -33,4 +33,7 @@ public interface AdminService {
      */
     Admin findAdminById(@Param("id") int id);
     int addAdminInfo(@Param("admin") Admin admin);
+
+
+    int updPwdAdmin(@Param("password") String password,@Param("id") Integer id,String passwordName);
 }
