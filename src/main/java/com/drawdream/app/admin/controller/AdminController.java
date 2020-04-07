@@ -60,6 +60,7 @@ public class AdminController {
         } else {
             admin = null;
         }
+        System.out.println(admin.toString());
         return admin;
     }
 
@@ -77,6 +78,7 @@ public class AdminController {
      */
     @RequestMapping("/login")
     public JsonResult Login(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println(request.getParameter("username"));
         return loginService.logins(request.getParameter("username"), request.getParameter("password"), "admin");
     }
 

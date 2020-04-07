@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
  * @date: 2020-04-03 09:04
  */
 
-@Component
 public interface AdminService {
     /**
      * 根据管理员名称查找对象

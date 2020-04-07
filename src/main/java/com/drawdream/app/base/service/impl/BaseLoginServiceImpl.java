@@ -41,6 +41,7 @@ public class BaseLoginServiceImpl implements BaseLoginService {
     public JsonResult logins(String username, String password, String type) {
         String admin = "admin";
         String home = "home";
+        System.out.println(username);
         if (admin.equals(type)) {
             return AdminLogin(username, password);
         } else if (home.equals(type)) {

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @author: tanhao
  * @date: 2020-04-06 14:54
  */
-@Service("RuleGroupService")
+@Service
 public class RuleGroupServiceImpl implements RuleGroupService {
     private final RuleGroupDao ruleGroupDao;
     @Autowired

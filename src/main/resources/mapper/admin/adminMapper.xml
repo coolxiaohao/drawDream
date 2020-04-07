@@ -8,7 +8,7 @@
    <!--查询-->
     <select id="findAdminById" resultMap="adminResult" resultType="com.drawdream.app.admin.pojo.Admin">
         select a.*,r.* from  admin a,
-             rule r where id = #{id} and r.id = a.adminRuleId
+             rule r where a.id = #{id} and r.id = a.adminRuleId
     </select>
     <!--根据用户名查询ADMIN对象-->
     <select id="findByAdminName" resultType="com.drawdream.app.admin.pojo.Admin">
