@@ -11,9 +11,9 @@ public class Admin {
     private int id;//管理员id
     private String adminName;//管理员名字
     private String adminPwd;//管理员密码
-//    private String adminKey;//管理员密码秘钥
+    //    private String adminKey;//管理员密码秘钥
     private String adminActionPwd;//管理员操作密码
-//    private String adminActionKey;//管理员操作密码秘钥
+    //    private String adminActionKey;//管理员操作密码秘钥
     private String adminPhone;//管理员手机号码
     private String adminToken;//管理员唯一登录验证
     private int adminRuleId;//管理员唯一登录验证

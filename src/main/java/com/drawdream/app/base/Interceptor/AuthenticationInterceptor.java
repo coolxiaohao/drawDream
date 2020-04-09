@@ -38,6 +38,9 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         String token = httpServletRequest.getHeader("admin_token");
         // 从 http 请求头中取出 token
         String module = httpServletRequest.getHeader("module");
+        if (module == null || module == ""){
+            module = "admin";
+        }
         if (module.equals("home") || module.equals("api")) {
             token = httpServletRequest.getHeader("user_token");
         }

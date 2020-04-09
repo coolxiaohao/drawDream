@@ -11,9 +11,7 @@ public class User {
     private Integer id;//用户id
     private String userName;//用户名
     private String userPwd;//用户密码
-    private String userKey;//用户密码秘钥
     private String userDealPwd;//用户支付密码
-    private String userDealKey;//用户支付密码秘钥
     private Integer status;//用户状态
     private String userPhone;//用户手机号码
     private Date addTime;//用户添加时间
@@ -43,28 +41,12 @@ public class User {
         this.userPwd = userPwd;
     }
 
-    public String getUserKey() {
-        return userKey;
-    }
-
-    public void setUserKey(String userKey) {
-        this.userKey = userKey;
-    }
-
     public String getUserDealPwd() {
         return userDealPwd;
     }
 
     public void setUserDealPwd(String userDealPwd) {
         this.userDealPwd = userDealPwd;
-    }
-
-    public String getUserDealKey() {
-        return userDealKey;
-    }
-
-    public void setUserDealKey(String userDealKey) {
-        this.userDealKey = userDealKey;
     }
 
     public Integer getStatus() {
@@ -97,5 +79,20 @@ public class User {
 
     public void setEditTime(Date editTime) {
         this.editTime = editTime;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", userPwd='" + userPwd + '\'' +
+                ", userDealPwd='" + userDealPwd + '\'' +
+                ", status=" + status +
+                ", userPhone='" + userPhone + '\'' +
+                ", addTime=" + addTime +
+                ", editTime=" + editTime +
+                '}';
     }
 }

@@ -82,6 +82,12 @@ public class AdminController {
         return loginService.logins(request.getParameter("username"), request.getParameter("password"), "admin");
     }
 
+    /**
+     * @return :JsonResult
+     * @desc ：添加管理员
+     * @Author : huangxinxin
+     * @date : 2020/4/8
+     */
     @RequestMapping("/addAdmin")
     public JsonResult AddAdmin(String adminName, String pwd, String actionPwd, String Phone, int ruleId, String headPortrait) {
         Admin admin = new Admin();
@@ -114,6 +120,12 @@ public class AdminController {
         }
     }
 
+    /**
+     * @return :JsonResult
+     * @desc ：根据密码修改管理员的登录密码，操作密码
+     * @Author : huangxinxin
+     * @date : 2020/4/8
+     */
     @RequestMapping("/updPwdAdmin")
     public JsonResult updPwdAdmin(String type,String oldPwd,String newPwd,String repeatPwd,String actionPwd){
         Admin admin=null;
@@ -144,4 +156,5 @@ public class AdminController {
         adminService.updPwdAdmin(SecureUtil.md5(newPwd),admin.getId(),type);
         return JsonResult.success();
     }
+
 }

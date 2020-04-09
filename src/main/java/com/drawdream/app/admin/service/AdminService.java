@@ -15,25 +15,28 @@ import org.springframework.stereotype.Component;
 public interface AdminService {
     /**
      * 根据管理员名称查找对象
+     *
      * @param adminName 管理员名称
+     * @return Admin
      * @desc: 根据管理员名称查找对象
      * @author: tanhao
      * @date: 2020-04-03 09:06
-     * @return Admin
      */
     Admin findByAdminName(@Param("adminName") String adminName);
 
     /**
      * 根据管理员id查找对象
+     *
      * @param id 管理员id
+     * @return Admin
      * @desc: 根据管理员id查找对象
      * @author: tanhao
      * @date: 2020-04-03 09:07
-     * @return Admin
      */
     Admin findAdminById(@Param("id") int id);
+
     int addAdminInfo(@Param("admin") Admin admin);
 
 
-    int updPwdAdmin(@Param("password") String password,@Param("id") Integer id,String passwordName);
+    int updPwdAdmin(@Param("password") String password, @Param("id") Integer id, String passwordName);
 }
