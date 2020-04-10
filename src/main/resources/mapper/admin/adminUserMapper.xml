@@ -4,4 +4,11 @@
     <insert id="addAdminUser" parameterType="com.drawdream.app.admin.pojo.User">
        insert into user(userName,userPwd,userDealPwd,status,userPhone,addTime,editTime)value (#{User.userName},#{User.userPwd},#{User.userDealPwd},#{User.status},#{User.userPhone},#{User.addTime},#{User.editTime})
     </insert>
+
+    <update id="updUser" parameterType="com.drawdream.app.admin.pojo.User">
+        <![CDATA[update User
+        set userName=#{User.userName},userPwd=#{User.userPwd},userDealPwd=#{User.userDealPwd},status=#{User.status},userPhone=#{User.userPhone},editTime=#{User.editTime}
+        where id = #{User.id}
+        ]]>
+    </update>
 </mapper>

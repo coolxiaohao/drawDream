@@ -1,6 +1,7 @@
 package com.drawdream.app.admin.pojo;
 
 import cn.hutool.core.date.DateTime;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
@@ -14,7 +15,9 @@ public class User {
     private String userDealPwd;//用户支付密码
     private Integer status;//用户状态
     private String userPhone;//用户手机号码
+//    @JsonFormat(pattern = "yyyy-MM-dd H:i:s", locale = "zh", timezone = "GMT+8")
     private Date addTime;//用户添加时间
+//    @JsonFormat(pattern = "yyyy-MM-dd HH:ii:ss", locale = "zh", timezone = "GMT+8")
     private Date editTime;//用户编辑时间
 
     public Integer getId() {

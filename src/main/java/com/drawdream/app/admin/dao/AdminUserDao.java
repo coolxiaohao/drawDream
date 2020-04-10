@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface AdminUserDao {
 
     int addAdminUser(@Param("User") User user);
+
+    int updUser(@Param("User")User user);
 }

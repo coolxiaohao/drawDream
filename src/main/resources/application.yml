@@ -4,7 +4,7 @@ spring:
  application:
   name: drawDream
  datasource:
-  url: jdbc:mysql://localhost:3306/drawdream?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&useSSL=false
+  url: jdbc:mysql://localhost:3306/drawdream?useUnicode=true&characterEncoding=utf8&serverTimezone=Hongkong&useSSL=false
   username: root #mysql 登录名
   password: root  #mysql 登录密码
   driver-class-name: com.mysql.cj.jdbc.Driver #mysql 服务支持
