@@ -58,7 +58,6 @@ public class AdminController {
         Admin admin = new Admin();
         if (id > 0) {
             admin = adminService.findAdminById(id);
-//            jedis.set("admin", );
         } else {
             admin = null;
         }
