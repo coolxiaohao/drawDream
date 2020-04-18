@@ -1,6 +1,5 @@
-package com.drawdream.app.base.Interceptor;
+package com.drawdream.app.base.interceptor;
 
-import com.drawdream.app.admin.service.AdminService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

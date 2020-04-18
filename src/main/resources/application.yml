@@ -25,7 +25,8 @@ spring:
      #开启热部署 true
      enabled: true
      #每次热部署进行编译的包
-     additional-paths: src/main/java
+     #additional-paths: src/main/java
+     additional-paths: src/main/java/com/drawdream/app
 #mybatis 配置
 mybatis:
  mapper-locations: classpath:mapper/*/*.xml

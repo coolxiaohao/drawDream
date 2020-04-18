@@ -1,4 +1,4 @@
-package com.drawdream.app.base.Interceptor;
+package com.drawdream.app.base.interceptor;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -11,7 +11,6 @@ import com.drawdream.app.admin.service.AdminService;
 import com.drawdream.app.admin.service.RuleService;
 import com.drawdream.app.base.excption.WrongException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -47,7 +46,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         //获取路由
         String path = httpServletRequest.getRequestURI();
         //是否跳过权限认证
-        System.out.println(path);
         Rule rule = ruleService.getRule(path);
         if (rule == null){
             return true;
