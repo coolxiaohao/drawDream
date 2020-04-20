@@ -1,6 +1,7 @@
 package com.drawdream.app.base.utils;
 
 import cn.hutool.db.nosql.redis.RedisDS;
+import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import org.springframework.util.CollectionUtils;
 import redis.clients.jedis.Jedis;
@@ -11,7 +12,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @desc: todo
+ * @desc: redis 封装类
  * @package: com.drawdream.app.base.utils
  * @fileName: Redis
  * @author: tanhao
@@ -196,7 +197,7 @@ public class RedisUtil {
      * @author: tanhao
      * @date: 2020-04-18 15:33
      */
-    public Object getObj(String key){
+    public JSONObject getObj(String key){
        return JSONUtil.parseObj(jedis.get(key));
     }
 

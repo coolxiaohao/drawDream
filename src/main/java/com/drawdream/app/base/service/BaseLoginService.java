@@ -16,5 +16,5 @@ public interface BaseLoginService {
      * @author: tanhao
      * @date: 2020-04-02 16:56
      */
-    public JsonResult logins(@Param("username") String username, @Param("password") String password, @Param("type") String type);
+    public JsonResult logins(@Param("username") String username, @Param("password") String password, @Param("type") String type,@Param("varify") String varify,@Param("varifyCode") String varifyCode);
 }

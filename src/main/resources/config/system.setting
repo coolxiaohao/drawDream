@@ -1,0 +1,6 @@
+#系统名称
+systemName = "绘梦商城"
+#是否开启唯一登陆
+systemOnly = 1
+#头像
+systemImg = ''

@@ -86,9 +86,10 @@ public class AdminController {
      * @author: tanhao
      * @date: 2020-04-02 16:48
      */
-    @RequestMapping("/login")
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     public JsonResult Login(HttpServletRequest request, HttpServletResponse response) {
-        return loginService.logins(request.getParameter("username"), request.getParameter("password"), "admin");
+//        System.out.println(request.getParameter("username"));
+        return loginService.logins(request.getParameter("username"), request.getParameter("password"), "admin",request.getParameter("varify"),request.getParameter("varifyCode"));
     }
 
     /**
@@ -173,18 +174,16 @@ public class AdminController {
      */
     @RequestMapping(value = "/generateValidateCode", method = RequestMethod.GET)
     public JsonResult getValidateCode() {
-
+        /*生成图形验证码*/
         LineCaptcha captcha = CaptchaUtil.createLineCaptcha(200, 100, 4, 4);
         String img = captcha.getImageBase64();
         String code = captcha.getCode();
-//        System.out.println(code);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("captchaImg","data:image/png;base64," + img);
         String key = IdUtil.randomUUID();
         jsonObject.put("varify",key);
         //生存120秒 也就是两分钟
         redisUtil.set(key,code,120);
-//        System.out.println(redisUtil.get(key));
         return JsonResult.success(200,jsonObject);
     }
 

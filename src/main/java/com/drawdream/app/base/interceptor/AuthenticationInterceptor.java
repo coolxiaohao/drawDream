@@ -1,5 +1,8 @@
 package com.drawdream.app.base.interceptor;
 
+import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.json.JSONObject;
+import cn.hutool.setting.Setting;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -10,6 +13,7 @@ import com.drawdream.app.admin.pojo.Rule;
 import com.drawdream.app.admin.service.AdminService;
 import com.drawdream.app.admin.service.RuleService;
 import com.drawdream.app.base.excption.WrongException;
+import com.drawdream.app.base.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -27,6 +31,8 @@ import java.lang.reflect.Method;
  * @date: 2020-04-05 22:20
  */
 public class AuthenticationInterceptor implements HandlerInterceptor {
+    private static RedisUtil redisUtil = new RedisUtil();
+
     @Autowired
     private AdminService adminService;
     @Autowired
@@ -92,9 +98,14 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             if (admin == null) {
                 throw new WrongException("用户不存在，请重新登录");
             }
+            JSONObject object = redisUtil.getObj(admin.getAdminName());
+            String loginToken = object.get("adminToken").toString();
+            Setting setting = new Setting("config/system.setting");
+            if (!token.equals(loginToken) && setting.getInt("systemOnly") == 1){
+                throw new WrongException(304,"登陆账号在别处登陆！请重新登陆！");
+            }
             String[] ruleIds = admin.getRulegroup().getRuleGroup().split(",");
             boolean isRule = false;
-
             for (String ruleId: ruleIds) {
                 String AccessPath = ruleService.getAccessPath(Integer.parseInt(ruleId));
                 if (AccessPath.equals(path)){

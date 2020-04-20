@@ -17,6 +17,7 @@ public class ToKenServiceImpl implements ToKenService {
     @Override
     public String getToken(int id, String pwd) {
         String token="";
+        //密码加时间生成一个UUID
         // 将 user id 保存到 token 里面 .以 password 作为 token 的密钥
         token= JWT.create().withAudience(String.valueOf(id))
                 .sign(Algorithm.HMAC256(pwd));
