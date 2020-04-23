@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : MySql
-Source Server Version : 50729
+Source Server         : 本地mysql
+Source Server Version : 100108
 Source Host           : localhost:3306
 Source Database       : drawdream
 
 Target Server Type    : MYSQL
-Target Server Version : 50729
+Target Server Version : 100108
 File Encoding         : 65001
 
-Date: 2020-04-09 16:38:44
+Date: 2020-04-23 11:43:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -68,12 +68,20 @@ CREATE TABLE `rule` (
   `addTime` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '添加时间',
   `port` varchar(255) CHARACTER SET utf8 NOT NULL COMMENT '权限属于哪一个端（‘admin’,‘home’,''api''）',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of rule
 -- ----------------------------
-INSERT INTO `rule` VALUES ('1', '后台登录', '/admin/login', '1', '1', '2020-04-03 07:55:17', 'admin');
+INSERT INTO `rule` VALUES ('1', '后台登录', '/admin/login', '1', '0', '2020-04-21 17:20:30', 'admin');
+INSERT INTO `rule` VALUES ('10', '添加权限组', '/ruleGroup/addRuleGroup', '1', '1', '2020-04-23 11:15:32', 'admin');
+INSERT INTO `rule` VALUES ('11', '增量生成权限', '/rule/createRule', '1', '1', '2020-04-23 11:15:32', 'admin');
+INSERT INTO `rule` VALUES ('12', '根据id获取管理员信息', '/admin/getAdmin', '1', '1', '2020-04-23 11:15:32', 'admin');
+INSERT INTO `rule` VALUES ('13', '获取redis中保存得用户信息', '/admin/getRedisName', '1', '1', '2020-04-23 11:15:32', 'admin');
+INSERT INTO `rule` VALUES ('14', '新增管理员', '/admin/addAdmin', '1', '1', '2020-04-23 11:15:32', 'admin');
+INSERT INTO `rule` VALUES ('15', '修改管理员密码', '/admin/updPwdAdmin', '1', '1', '2020-04-23 11:15:32', 'admin');
+INSERT INTO `rule` VALUES ('16', '获取登录验证码', '/admin/generateValidateCode', '1', '0', '2020-04-23 11:17:44', 'admin');
+INSERT INTO `rule` VALUES ('17', '首页', '/admin/index', '1', '1', '2020-04-23 11:15:32', 'admin');
 
 -- ----------------------------
 -- Table structure for rulegroup
@@ -88,11 +96,12 @@ CREATE TABLE `rulegroup` (
   `addTime` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '添加时间',
   `editTime` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of rulegroup
 -- ----------------------------
+INSERT INTO `rulegroup` VALUES ('1', '默认', '1', '1', '1', null, null);
 
 -- ----------------------------
 -- Table structure for user
