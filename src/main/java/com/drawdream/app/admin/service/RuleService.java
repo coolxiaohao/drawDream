@@ -17,4 +17,5 @@ public interface RuleService {
     Rule getRule(@Param("accessPath")  String accessPath);
     JsonResult createRule();
     String getAccessPath(@Param("id")  int id);
+    JsonResult getLoginRules(String path);
 }

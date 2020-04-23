@@ -3,13 +3,10 @@ package com.drawdream.app.admin.controller;
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.LineCaptcha;
 import cn.hutool.core.date.DateTime;
-import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
-import cn.hutool.db.nosql.redis.RedisDS;
 import cn.hutool.json.JSONObject;
-import cn.hutool.json.JSONUtil;
 import com.drawdream.app.admin.pojo.Admin;
 import com.drawdream.app.admin.service.AdminService;
 import com.drawdream.app.base.pojo.JsonResult;
@@ -20,13 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import redis.clients.jedis.Jedis;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @desc: admin
@@ -183,6 +176,7 @@ public class AdminController {
         String key = IdUtil.randomUUID();
         jsonObject.put("varify",key);
         //生存120秒 也就是两分钟
+//        System.out.println(1234567);
         redisUtil.set(key,code,120);
         return JsonResult.success(200,jsonObject);
     }

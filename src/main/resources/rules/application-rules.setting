@@ -1,4 +1,4 @@
 ###模块化,绑定rules.setting 中的名称###
-admin= [addRuleGroup,createRule]
+admin= [addRuleGroup,createRule,getAdmin,getRedisName,addAdmin,updPwdAdmin,generateValidateCode,indexPage]
 home= [,]
 api= [,]

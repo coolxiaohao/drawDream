@@ -27,9 +27,8 @@ import java.util.Enumeration;
 public class CorsFilter implements Filter {
 
 
-    private static final String PARAMS_SEPARATE = "http://localhost:8081, ";
+    private static final String PARAMS_SEPARATE = ",http://localhost:8081,http://localhost:8080, ";
 
-//    @Value(staticConstructor = "${cors.access.control.maxAge:7200}")
     String corsAccessControlMaxAge = "7200";
 
     @Override
@@ -44,8 +43,11 @@ public class CorsFilter implements Filter {
         HttpServletResponse httpServletResponse = ((HttpServletResponse) servletResponse);
 
         httpServletResponse.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, httpServletRequest.getHeader(HttpHeaders.ORIGIN));
+        /*获取所有请求中的所有headers头*/
         httpServletResponse.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS, getHeaders(httpServletRequest));
+        /*最大*/
         httpServletResponse.addHeader(HttpHeaders.ACCESS_CONTROL_MAX_AGE, corsAccessControlMaxAge);
+        /**/
         httpServletResponse.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS, "true");
 
         if (HttpMethod.OPTIONS.name().equalsIgnoreCase(httpServletRequest.getMethod())) {
@@ -65,7 +67,7 @@ public class CorsFilter implements Filter {
         if (!(accessControlRequestHeaders == null || accessControlRequestHeaders.isEmpty())) {
             params.append(accessControlRequestHeaders).append(PARAMS_SEPARATE);
         }
-
+        /*遍历所有header头 添加到StringBuilder字符串*/
         Enumeration<String> names = httpServletRequest.getHeaderNames();
         while (names.hasMoreElements()) {
             params.append(names.nextElement()).append(PARAMS_SEPARATE);

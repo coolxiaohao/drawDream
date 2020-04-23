@@ -21,6 +21,7 @@ public class TokenUtil {
       */
     public static String getTokenAdminId() {
         String token = getRequest().getHeader("admin_token");// 从 http 请求头中取出 token
+//        System.out.println(token);
         return JWT.decode(token).getAudience().get(0);
     }
     /**

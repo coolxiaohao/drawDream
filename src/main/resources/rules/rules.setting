@@ -1,9 +1,10 @@
 ### 权限：命名规则 模块+方法名 ###
 ### ruleName 权限名称###
 ### accessPath 权限路由###
-### needRule 是否默认###
-### type 是否需要登陆权限###
-
+### needRule 是否默认 0 否 1 是###
+### type 是否需要登陆权限 0 不需要 1 需要###
+############################################################## admin权限 ##############################################################
+###### 接口权限 ######
 #addRuleGroup 添加权限组
 addRuleGroup.ruleName= 添加权限组
 addRuleGroup.accessPath= /ruleGroup/addRuleGroup
@@ -15,3 +16,45 @@ createRule.ruleName= 增量生成权限
 createRule.accessPath= /rule/createRule
 createRule.needRule= 1
 createRule.type= 1
+
+#getAdmin 根据id获取管理员信息
+getAdmin.ruleName= 根据id获取管理员信息
+getAdmin.accessPath= /admin/getAdmin
+getAdmin.needRule= 1
+getAdmin.type= 1
+
+#getRedisName 获取redis中保存得用户信息
+getRedisName.ruleName= 获取redis中保存得用户信息
+getRedisName.accessPath= /admin/getRedisName
+getRedisName.needRule= 1
+getRedisName.type= 1
+
+#addAdmin 新增管理员
+addAdmin.ruleName= 新增管理员
+addAdmin.accessPath= /admin/addAdmin
+addAdmin.needRule= 1
+addAdmin.type= 1
+
+#updPwdAdmin 修改管理员密码
+updPwdAdmin.ruleName= 修改管理员密码
+updPwdAdmin.accessPath= /admin/updPwdAdmin
+updPwdAdmin.needRule= 1
+updPwdAdmin.type= 1
+
+#generateValidateCode 获取登录验证码
+generateValidateCode.ruleName= 获取登录验证码
+generateValidateCode.accessPath= /admin/generateValidateCode
+generateValidateCode.needRule= 1
+generateValidateCode.type= 1
+
+###### 页面权限 ######
+#indexPage 首页
+indexPage.ruleName= 首页
+indexPage.accessPath= /admin/index
+indexPage.needRule= 1
+indexPage.type= 1
+
+
+############################################################## PC权限 ##############################################################
+
+############################################################## APP 权限 ##############################################################

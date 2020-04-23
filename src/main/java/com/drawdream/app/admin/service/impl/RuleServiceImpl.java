@@ -95,7 +95,6 @@ public class RuleServiceImpl implements RuleService {
                     addRule(rule);
                     count++;
                 }
-                rule = null;
             }
         }
         if (count > 0){
@@ -109,5 +108,10 @@ public class RuleServiceImpl implements RuleService {
     @Override
     public String getAccessPath(int id) {
         return ruleDao.getAccessPath(id);
+    }
+
+    @Override
+    public JsonResult getLoginRules(String path) {
+        return JsonResult.success(200,ruleDao.getRule(path));
     }
 }
