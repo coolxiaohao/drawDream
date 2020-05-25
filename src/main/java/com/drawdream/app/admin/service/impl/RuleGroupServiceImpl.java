@@ -15,12 +15,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class RuleGroupServiceImpl implements RuleGroupService {
-    private final RuleGroupDao ruleGroupDao;
-
     @Autowired
-    public RuleGroupServiceImpl(RuleGroupDao ruleGroupDao) {
-        this.ruleGroupDao = ruleGroupDao;
-    }
+    private RuleGroupDao ruleGroupDao;
 
     @Override
     public int addRuleGroup(RuleGroup ruleGroup) {

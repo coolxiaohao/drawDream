@@ -5,6 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import com.drawdream.app.admin.pojo.RuleGroup;
 import com.drawdream.app.admin.service.RuleGroupService;
 import com.drawdream.app.base.pojo.JsonResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,11 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/ruleGroup")
 public class RuleGroupController {
-    private final RuleGroupService ruleGroupService;
-
-    public RuleGroupController(RuleGroupService ruleGroupService) {
-        this.ruleGroupService = ruleGroupService;
-    }
+    @Autowired
+    private RuleGroupService ruleGroupService;
 
     @RequestMapping("/addRuleGroup")
     public JsonResult addRuleGroup(String group,String groupName,int type,int isDefault){

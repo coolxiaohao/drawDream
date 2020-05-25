@@ -2,8 +2,6 @@ package com.drawdream.app.base.service.impl;
 
 import cn.hutool.core.date.DateTime;
 import cn.hutool.crypto.SecureUtil;
-import cn.hutool.db.nosql.redis.RedisDS;
-import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.drawdream.app.admin.pojo.Admin;
 import com.drawdream.app.admin.service.AdminService;
@@ -13,7 +11,6 @@ import com.drawdream.app.base.service.ToKenService;
 import com.drawdream.app.base.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import redis.clients.jedis.Jedis;
 
 /**
  * @desc: 公用登录业务实现层
@@ -31,14 +28,10 @@ public class BaseLoginServiceImpl implements BaseLoginService {
      * @author: tanhao
      * @date: 2020-04-03 09:17
      */
-    private final AdminService adminService;
-    private final ToKenService toKenService;
-
     @Autowired
-    public BaseLoginServiceImpl(AdminService adminService, ToKenService toKenService) {
-        this.adminService = adminService;
-        this.toKenService = toKenService;
-    }
+    private  AdminService adminService;
+    @Autowired
+    private  ToKenService toKenService;
 
     @Override
     public JsonResult logins(String username, String password, String type, String varify, String varifyCode) {

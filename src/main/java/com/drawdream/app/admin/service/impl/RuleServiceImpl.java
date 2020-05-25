@@ -26,15 +26,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class RuleServiceImpl implements RuleService {
-    private final RuleDao ruleDao;
-
-    private final AdminService adminService;
-
     @Autowired
-    public RuleServiceImpl(RuleDao ruleDao, AdminService adminService) {
-        this.ruleDao = ruleDao;
-        this.adminService = adminService;
-    }
+    private RuleDao ruleDao;
+    @Autowired
+    private AdminService adminService;
 
     @Override
     public int addRule(Rule rule) {
@@ -67,7 +62,6 @@ public class RuleServiceImpl implements RuleService {
         for (String port: ports) {
             JSONArray array= JSONUtil.parseArray(setting.getStr(port));
             for ( Object i: array) {
-                //获取权限组进行新增
                 String key = i.toString()+".";
                 String ruleName = rules.getStr(key+"ruleName");
                 String accessPath = rules.getStr(key+"accessPath");

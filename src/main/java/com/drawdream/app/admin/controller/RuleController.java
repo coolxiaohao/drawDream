@@ -17,13 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/rules")
 public class RuleController {
-
-    private final RuleService ruleService;
-
     @Autowired
-    public RuleController(RuleService ruleService) {
-        this.ruleService = ruleService;
-    }
+    private RuleService ruleService;
 
     @RequestMapping("/createRule")
     public JsonResult createRuleController(){

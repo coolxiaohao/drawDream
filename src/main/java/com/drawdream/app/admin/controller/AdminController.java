@@ -40,21 +40,10 @@ public class AdminController {
      * 提升了代码的可复用性：非IOC容器环境可使用new实例化该类的对象。
      * 避免循环依赖：如果使用构造器注入，在spring项目启动的时候，就会抛出：BeanCurrentlyInCreationException：Requested bean is currently in creation: Is there an unresolvable circular reference？从而提醒你避免循环依赖，如果是field注入的话，启动的时候不会报错，在使用那个bean的时候才会报错。
      */
-    private final AdminService adminService;
-    private final BaseLoginService loginService;
-
-    /**
-     * @param adminService 管理员service
-     * @param loginService 登录service
-     * @desc: 构造方法初始化注入
-     * @author: tanhao
-     * @date: 2020-04-03 09:18
-     */
     @Autowired
-    public AdminController(AdminService adminService, BaseLoginService loginService) {
-        this.adminService = adminService;
-        this.loginService = loginService;
-    }
+    private AdminService adminService;
+    @Autowired
+    private BaseLoginService loginService;
 
     @RequestMapping("/getAdmin")
     public Admin getAdmin(int id) {

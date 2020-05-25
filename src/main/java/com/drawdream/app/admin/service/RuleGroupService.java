@@ -13,3 +13,4 @@ import org.apache.ibatis.annotations.Param;
 public interface RuleGroupService {
     int addRuleGroup(@Param("ruleGroup") RuleGroup ruleGroup);
 }
+ 

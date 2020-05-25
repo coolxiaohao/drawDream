@@ -7,6 +7,7 @@ import com.drawdream.app.admin.pojo.User;
 import com.drawdream.app.admin.service.AdminUserService;
 import com.drawdream.app.base.pojo.JsonResult;
 import com.drawdream.app.base.service.BaseUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,13 +17,10 @@ import java.util.Date;
 @RequestMapping("/adminUser")
 public class AdminUserController {
 
-    private final AdminUserService adminUserService;
-    private final BaseUserService baseUserService;
-
-    public AdminUserController(AdminUserService adminUserService, BaseUserService baseUserService) {
-        this.adminUserService = adminUserService;
-        this.baseUserService = baseUserService;
-    }
+    @Autowired
+    private AdminUserService adminUserService;
+    @Autowired
+    private BaseUserService baseUserService;
 
     /**
      * @return :JsonResult
@@ -86,14 +84,12 @@ public class AdminUserController {
         user.setStatus(status);
         user.setUserPhone(userPhone);
         user.setEditTime(new DateTime());
-//        DateTime dateTime = new DateTime(); //你这不是废话 肯定是这个问题啦
-//        System.out.println(new DateTime().toString());//??不可以输出到控制台的咩 热部署好像有问题 到时候看看
+
         int count = baseUserService.updUser(user);
         if (count>0) {
             return JsonResult.success(200,"修改成功！");
         } else {
             return JsonResult.errorMsg(500,"修改失败！");
-
         }
     }
 }

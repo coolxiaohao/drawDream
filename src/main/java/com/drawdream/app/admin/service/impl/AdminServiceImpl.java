@@ -19,17 +19,8 @@ import java.lang.reflect.Method;
 
 @Service
 public class AdminServiceImpl implements AdminService {
-    /**
-     * @desc: 构造方法形式的注入
-     * @author: tanhao
-     * @date: 2020-04-03 09:15
-     */
-    private final AdminDao adminDao;
-
     @Autowired
-    public AdminServiceImpl(AdminDao adminDao) {
-        this.adminDao = adminDao;
-    }
+    private AdminDao adminDao;
 
     @Override
     public Admin findByAdminName(String adminName) {

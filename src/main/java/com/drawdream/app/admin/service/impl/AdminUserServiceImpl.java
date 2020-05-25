@@ -9,13 +9,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AdminUserServiceImpl implements AdminUserService {
-
-    private final AdminUserDao adminUserDao;
-
     @Autowired
-    public AdminUserServiceImpl(AdminUserDao adminUserDao) {
-        this.adminUserDao = adminUserDao;
-    }
+    private AdminUserDao adminUserDao;
 
     @Override
     public int addAdminUser(User user) {
